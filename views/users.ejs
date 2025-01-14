@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style >
+
+.row2{
+    border: 2px solid rgb(252, 247, 247);
+    background-color: rgb(31, 124, 50);
+    font-size: 15px;
+    color: wheat;
+}
+
+.edit{
+    background-color:rgb(245, 245, 64);
+    color: brown;
+    font-size: 15px;
+}
+.delete{
+    background-color: red;
+    color: white;
+    font-size: 15px;
+
+}
+
+.add{
+    background-color: rgb(46, 139, 139);
+    font-size: 18px;
+    color: rgb(255, 255, 255)
+    ;
+    
+}
+
+</style>
+
+</head>
+<body>
+    
+
+
+<h2><form method="get" action="/users/new"  >
+
+    <Button class="add"  >Add User</Button> 
+
+</form> </h2>
+
+<h2> Users are : </h2>
+
+<table class="row2" >
+    <tr  >
+        <th class="row2" >Username</th> 
+          <th class="row2"  >Email</th>
+          <th class="row2"  >Edit</th>
+          <th class="row2"  >Delete</th>
+        </tr>
+  
+<% for (user of users) { %>
+    <tr class="row2" >
+<td class="row2" > <%= user.username  %> </td>
+   <td class="row2" > <%= user.email  %> </td>
+   <td>
+   <form method="get"  action="/user/<%= user.id%>/edit" >
+    <button class="edit" >Edit Username </button>  
+</td>
+<td>
+</form>
+<form  method="post"  action="/user/<%= user.id%>?_method=delete"  >
+ <button class="delete" >Delete User </button>
+</form>
+</td>
+</tr>
+<% } %>
+
+</table>
+</body>
+</html>
